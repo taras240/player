@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>Player</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="main">
+        <main>
+          <div class="player">
+            <div class="player__header">
+              <input class="player__volume-bar" type="range" min="0" max="100" value="75" class="slider" id="volume">
+              <span id="volume-level">-</span>
+            </div>
+            <div class="player__song">
+              <input class="player__seek-bar" type="range" min="0" max="100" value="90" class="progress" id="progress">
+
+                <button class="player__play-button" onclick="playPressed(this)"></button>
+                <p class="player__song-name">
+                    <span class="player__song-artist">Europe</span>
+                    <span class="player__song-title">Final countdown </span>
+                </p><p class="player__song-time"></p>
+                <p class="player__song-lenght">?:??</p>
+            </div>
+            <div class="player__song">
+                <button class="player__play-button" onclick="playPessed()"></button>
+                <p class="player__song-name">
+                    <span class="player__song-artist">Andrea Bocelli</span><span class="player__song-title">Bésame Mucho 
+                </p>
+                <p class="player__song-lenght">3:28</p>
+            </div> 
+            <div class="player__song">
+                <button class="player__play-button"></button>
+                <p class="player__song-name">
+                    <span class="player__song-artist">Andrea Bocelli</span><span class="player__song-title">Bésame Mucho 
+                </p>
+                <p class="player__song-lenght">3:28</p>
+            </div> 
+            <div class="player__song">
+                <button class="player__play-button"></button>
+                <p class="player__song-name">
+                    <span class="player__song-artist">Andrea Bocelli</span><span class="player__song-title">Bésame Mucho 
+                </p>
+                <p class="player__song-lenght">3:28</p>
+            </div> 
+            <div class="player__song">
+                <button class="player__play-button"></button>
+                <p class="player__song-name">
+                    <span class="player__song-artist">Andrea Bocelli</span><span class="player__song-title">Bésame Mucho 
+                </p>
+                <p class="player__song-lenght">3:28</p>
+            </div>
+            </div>
+        </main>
+      </section>
+
+      <script src="/scripts/howler.core.js"></script>
+      <script src="/scripts/player.js"></script>
+    </div>
+  </body>
+</html>

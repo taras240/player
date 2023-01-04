@@ -1,0 +1,177 @@
+@import "null.css";
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+body {
+  font-family: "Roboto";
+}
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: bisque; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.player {
+  margin: auto;
+  width: 50vw;
+  border: 1px solid rgb(195, 235, 253);
+}
+.player__volume-bar {
+  margin: 10px;
+  border: solid gray 2px;
+  background-color: rebeccapurple;
+}
+.player__header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+#volume-level {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+#volume-level::after {
+  content: "%";
+}
+.player__song {
+  border: 2px solid #083965;
+  margin: 1px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 2.2rem;
+  padding: 5px 5px;
+  background-color: rgba(0, 204, 255, 0.192);
+}
+#progress {
+  margin: auto;
+  overflow: hidden;
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+#progress::-webkit-slider-runnable-track {
+  height: 100%;
+}
+/*-------------------------------------*/
+/* #progress {
+  margin: auto;
+  -webkit-appearance: none;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0;
+} */
+
+#progress::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+/*
+* 1. Set to 0 width and remove border for a slider without a thumb
+* 2. Shadow is negative the full width of the input and has a spread 
+*    of the width of the input.
+*/
+#progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0; /* 1 */
+  height: 100%;
+  background: #fff;
+  box-shadow: -1000px 0 0 1000px dodgerblue; /* 2 */
+  /* border: 2px solid #999; 1 */
+}
+
+#progress::-moz-range-track {
+  height: 40px;
+  background: #000;
+}
+
+::-moz-range-thumb {
+  background: #fff;
+  height: 40px;
+  width: 0;
+  /* border: 3px solid #999; */
+  border-radius: 0 !important;
+  box-shadow: -200px 0 0 200px dodgerblue;
+  box-sizing: border-box;
+}
+
+#progress::-ms-fill-lower {
+  background: dodgerblue;
+}
+
+#progress::-ms-thumb {
+  background: #fff;
+  border: 2px solid #999;
+  height: 40px;
+  width: 20px;
+  box-sizing: border-box;
+}
+
+#progress::-ms-ticks-after {
+  display: none;
+}
+
+#progress::-ms-ticks-before {
+  display: none;
+}
+
+#progress::-ms-track {
+  background: #ddd;
+  color: transparent;
+  height: 40px;
+  border: none;
+}
+
+#progress::-ms-tooltip {
+  display: none;
+}
+/*----------------------------------------------*/
+.player__song-name {
+  font-size: 1.2rem;
+  z-index: 6;
+  pointer-events: none;
+}
+.player__song:nth-child(even) {
+  background-color: rgba(2, 142, 177, 0.192);
+}
+.player__song-artist {
+  font-weight: 700;
+}
+.player__song-title::before {
+  content: " - ";
+  /* font-weight: 500; */
+}
+.player__play-button,
+.player__pause-button {
+  background-image: url(/assets/play.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  width: 1.4rem;
+  height: 1.4rem;
+  z-index: 10;
+
+  /* border: 1px solid red; */
+}
+.player__play-button.played {
+  background-image: url(/assets/pause.png);
+}
+.player__play-button.paused {
+  background-image: url(/assets/play.png);
+}
+.player__song-lenght {
+  position: absolute;
+  right: 10px;
+  z-index: 6;
+  user-select: none;
+  pointer-events: none;
+}
