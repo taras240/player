@@ -8,13 +8,13 @@ body {
   height: 100vh;
   /* background-color: bisque; */
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 .player {
   margin: auto;
   width: 95vw;
-  max-width: 600px;
+  /* max-width: 600px; */
   border: 1px solid rgb(195, 235, 253);
 }
 .player__volume-bar {
