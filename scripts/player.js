@@ -1,5 +1,6 @@
 let musicUri =
-  "https://ms08.spac.me/m/082143054170081013093162026054146213057230216219187255120180/1672782151/100497807/0/ac367ece022b32fa06077347fdb5bac7/Europa-The_Final_Countdown-spcs.life.mp3";
+  "https://ms08.spac.me/m/082143054170081013093162026054146213057230216219187255120180/1672873611/100497807/0/ac367ece022b32fa06077347fdb5bac7/Europa-The_Final_Countdown-spcs.life.mp3";
+
 let volumeBar = document.getElementById("volume");
 let volLevel = document.getElementById("volume-level");
 volLevel.innerText = volumeBar.value;
