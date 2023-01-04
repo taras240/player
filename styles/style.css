@@ -151,7 +151,7 @@ body {
 }
 .player__play-button,
 .player__pause-button {
-  background-image: url(/assets/play.png);
+  background-image: url(assets/play.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -163,10 +163,10 @@ body {
   /* border: 1px solid red; */
 }
 .player__play-button.played {
-  background-image: url(/assets/pause.png);
+  background-image: url(assets/pause.png);
 }
 .player__play-button.paused {
-  background-image: url(/assets/play.png);
+  background-image: url(assets/play.png);
 }
 .player__song-lenght {
   position: absolute;
