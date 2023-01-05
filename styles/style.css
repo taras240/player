@@ -7,15 +7,30 @@ body {
   width: 100vw;
   height: 100vh;
   /* background-color: bisque; */
-  /* display: flex;
-  align-items: flex-start;
-  justify-content: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .player {
   margin: auto;
   width: 95vw;
+  max-width: 1000px;
   /* max-width: 600px; */
   border: 1px solid rgb(195, 235, 253);
+}
+.player__header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+#search-bar,
+#searchButton {
+  border: 2px solid dodgerblue;
+  padding: 5px;
+  font-size: 16px;
+}
+#searchButton {
 }
 .player__volume-bar {
   margin: 10px;
@@ -45,7 +60,7 @@ body {
   padding: 5px 5px;
   background-color: rgba(0, 204, 255, 0.192);
 }
-#progress {
+.player__seek-bar {
   margin: auto;
   overflow: hidden;
   -webkit-appearance: none;
@@ -56,7 +71,7 @@ body {
   height: 100%;
   background-color: transparent;
 }
-#progress::-webkit-slider-runnable-track {
+.player__seek-bar::-webkit-slider-runnable-track {
   height: 100%;
 }
 /*-------------------------------------*/
@@ -71,7 +86,7 @@ body {
   border-radius: 0;
 } */
 
-#progress::-webkit-slider-runnable-track {
+.player__seek-bar::-webkit-slider-runnable-track {
   background: transparent;
 }
 
@@ -80,7 +95,7 @@ body {
 * 2. Shadow is negative the full width of the input and has a spread 
 *    of the width of the input.
 */
-#progress::-webkit-slider-thumb {
+.player__seek-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 0; /* 1 */
   height: 100%;
@@ -89,7 +104,7 @@ body {
   /* border: 2px solid #999; 1 */
 }
 
-#progress::-moz-range-track {
+.player__seek-bar::-moz-range-track {
   height: 40px;
   background: #000;
 }
@@ -104,11 +119,11 @@ body {
   box-sizing: border-box;
 }
 
-#progress::-ms-fill-lower {
+.player__seek-bar::-ms-fill-lower {
   background: dodgerblue;
 }
 
-#progress::-ms-thumb {
+.player__seek-bar::-ms-thumb {
   background: #fff;
   border: 2px solid #999;
   height: 40px;
@@ -116,22 +131,22 @@ body {
   box-sizing: border-box;
 }
 
-#progress::-ms-ticks-after {
+.player__seek-bar::-ms-ticks-after {
   display: none;
 }
 
-#progress::-ms-ticks-before {
+.player__seek-bar::-ms-ticks-before {
   display: none;
 }
 
-#progress::-ms-track {
+.player__seek-bar::-ms-track {
   background: #ddd;
   color: transparent;
   height: 40px;
   border: none;
 }
 
-#progress::-ms-tooltip {
+.player__seek-bar::-ms-tooltip {
   display: none;
 }
 /*----------------------------------------------*/

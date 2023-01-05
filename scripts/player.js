@@ -8,25 +8,30 @@ volumeBar.oninput = function () {
   volLevel.textContent = this.value;
   Howler.volume(this.value / 100);
 };
-let progress = document.getElementById("progress");
-progress.oninput = function () {
-  sound.seek((this.value / 100) * sound.duration());
-};
+let progress = document.getElementsByClassName("player__seek-bar")[0];
+
 let sound;
-let playBtn = document.getElementsByClassName("player__play-button")[0];
-let pauseBtn = document.getElementsByClassName("player__pause-button")[0];
-let time = document.getElementsByClassName("player__song-lenght")[0];
+let time;
 let playedElement = 0;
+function updateElement() {
+  time = playedElement.getElementsByClassName("player__song-lenght")[0];
+  progress = playedElement.getElementsByClassName("player__seek-bar")[0];
+  progress.oninput = function () {
+    sound.seek((this.value / 100) * sound.duration());
+  };
+}
 function playPressed(element) {
   if (playedElement == 0) {
-    playedElement = element;
+    playedElement = element.parentNode;
   }
-  if (playedElement != 0 && element != playedElement) {
+  if (playedElement != 0 && element.parentNode != playedElement) {
     Howler.stop();
-    playedElement.className = "player__play-button";
+    playedElement.getElementsByClassName("player__play-button")[0].className =
+      "player__play-button";
+    playedElement.getElementsByClassName("player__seek-bar")[0].value = 0;
     // playedElement.classList.remove("paused");
 
-    playedElement = element;
+    playedElement = element.parentNode;
   }
   if (element.classList.contains("played")) {
     sound.pause();
@@ -45,6 +50,7 @@ function playPressed(element) {
     sound.play();
     element.classList.add("played");
     element.classList.remove("paused");
+    updateElement();
     timer = setInterval(timerTick, 300);
   }
 }
@@ -67,4 +73,9 @@ function formatTime(secs) {
 
 function getUrl(element) {
   return element.parentNode.getAttribute("href");
+}
+
+function search() {
+  let req = document.getElementById("search-bar").value;
+  searchSongs(req);
 }

@@ -13,6 +13,8 @@
         <main>
           <div class="player" id="player">
             <div class="player__header">
+              <input type="text" id="search-bar" value="Eminem" />
+              <button id="searchButton" onclick="search()">Search</button>
               <input
                 class="player__volume-bar"
                 type="range"
@@ -24,30 +26,30 @@
               />
               <span id="volume-level">-</span>
             </div>
-            <div
-              class="player__song"
-              href="http://ms02.spac.me/m/002038029179188231042164245162018170240047235125132139144205/1672952712/119205475/0/dff554da16a72d1951504b1392454995/04._Pots_And_Stove_%28Feat._Boosie_Badazz_%26amp;_Quick%29.mp3"
-            >
-              <input
-                class="player__seek-bar"
-                type="range"
-                min="0"
-                max="100"
-                value="0"
-                class="progress"
-                id="progress"
-              />
+            <div id="player__songs">
+              <div
+                class="player__song"
+                href="http://ms02.spac.me/m/002038029179188231042164245162018170240047235125132139144205/1672952712/119205475/0/dff554da16a72d1951504b1392454995/04._Pots_And_Stove_%28Feat._Boosie_Badazz_%26amp;_Quick%29.mp3"
+              >
+                <input
+                  class="player__seek-bar"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
 
-              <button
-                class="player__play-button"
-                onclick="playPressed(this)"
-              ></button>
-              <p class="player__song-name">
-                <span class="player__song-artist">Europe</span>
-                <span class="player__song-title">Final countdown </span>
-              </p>
-              <p class="player__song-time"></p>
-              <p class="player__song-lenght">?:??</p>
+                <button
+                  class="player__play-button"
+                  onclick="playPressed(this)"
+                ></button>
+                <p class="player__song-name">
+                  <span class="player__song-artist">Europe</span>
+                  <span class="player__song-title">Final countdown </span>
+                </p>
+                <p class="player__song-time"></p>
+                <p class="player__song-lenght">?:??</p>
+              </div>
             </div>
           </div>
         </main>
@@ -56,9 +58,10 @@
         <div class="debug" id="debug"></div>
       </section>
       <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
+      <script src="scripts/parser.js"></script>
+
       <script src="scripts/howler.core.js"></script>
       <script src="scripts/player.js"></script>
-      <script src="scripts/parser.js"></script>
     </div>
   </body>
 </html>
