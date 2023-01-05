@@ -1,13 +1,13 @@
 // let musicUri =
 //   "http://ms02.spac.me/m/002038029179188231042164245162018170240047235125132139144205/1672952712/119205475/0/dff554da16a72d1951504b1392454995/04._Pots_And_Stove_%28Feat._Boosie_Badazz_%26amp;_Quick%29.mp3";
 
-let volumeBar = document.getElementById("volume");
-let volLevel = document.getElementById("volume-level");
-volLevel.innerText = volumeBar.value;
-volumeBar.oninput = function () {
-  volLevel.textContent = this.value;
-  Howler.volume(this.value / 100);
-};
+// let volumeBar = document.getElementById("volume");
+// let volLevel = document.getElementById("volume-level");
+// volLevel.innerText = volumeBar.value;
+// volumeBar.oninput = function () {
+//   volLevel.textContent = this.value;
+//   Howler.volume(this.value / 100);
+// };
 let progress = document.getElementsByClassName("player__seek-bar")[0];
 
 let sound;
