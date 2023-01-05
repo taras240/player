@@ -13,21 +13,28 @@
         <main>
           <div class="player" id="player">
             <div class="player__header">
-              <input type="text" id="search-bar" value="Eminem" />
-              <button id="searchButton" onclick="search()">Search</button>
               <input
-                class="player__volume-bar"
-                type="range"
-                min="0"
-                max="100"
-                value="75"
-                class="slider"
-                id="volume"
+                type="text"
+                id="search-bar"
+                placeholder="Search song"
+                value="Eminem"
               />
-              <span id="volume-level">-</span>
+              <button id="searchButton" onclick="search()">Search</button>
+              <!-- <div class="">
+                <input
+                  class="player__volume-bar"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="75"
+                  class="slider"
+                  id="volume"
+                />
+                <span id="volume-level">-</span>
+              </div> -->
             </div>
             <div id="player__songs">
-              <div
+              <!-- <div
                 class="player__song"
                 href="http://ms02.spac.me/m/002038029179188231042164245162018170240047235125132139144205/1672952712/119205475/0/dff554da16a72d1951504b1392454995/04._Pots_And_Stove_%28Feat._Boosie_Badazz_%26amp;_Quick%29.mp3"
               >
@@ -49,7 +56,7 @@
                 </p>
                 <p class="player__song-time"></p>
                 <p class="player__song-lenght">?:??</p>
-              </div>
+              </div> -->
             </div>
           </div>
         </main>

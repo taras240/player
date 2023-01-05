@@ -8,7 +8,7 @@ body {
   height: 100vh;
   /* background-color: bisque; */
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 .player {
@@ -16,7 +16,7 @@ body {
   width: 95vw;
   max-width: 1000px;
   /* max-width: 600px; */
-  border: 1px solid rgb(195, 235, 253);
+  /* border: 1px solid rgb(195, 235, 253); */
 }
 .player__header {
   display: flex;
@@ -39,8 +39,10 @@ body {
 }
 .player__header {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
 }
 #volume-level {
   font-size: 1.2rem;
@@ -56,7 +58,7 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  height: 2.2rem;
+  height: 2.6rem;
   padding: 5px 5px;
   background-color: rgba(0, 204, 255, 0.192);
 }
@@ -154,6 +156,8 @@ body {
   font-size: 1.2rem;
   z-index: 6;
   pointer-events: none;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .player__song:nth-child(even) {
   background-color: rgba(2, 142, 177, 0.192);
@@ -172,7 +176,7 @@ body {
   background-position: center;
   background-size: contain;
   background-color: transparent;
-  width: 1.4rem;
+  min-width: 1.4rem;
   height: 1.4rem;
   z-index: 10;
 
@@ -185,9 +189,10 @@ body {
   background-image: url(../assets/play.png);
 }
 .player__song-lenght {
-  position: absolute;
+  position: relative;
   right: 10px;
   z-index: 6;
   user-select: none;
   pointer-events: none;
+  display: none;
 }

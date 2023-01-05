@@ -35,6 +35,6 @@ function addSong(url, songName) {
         <span class="player__song-artist">${songName[0]}</span>
         <span class="player__song-title">${songName[1]}</span>
     </p><p class="player__song-time"></p>
-    <p class="player__song-lenght">?:??</p>
+    <p class="player__song-lenght"></p>
 </div>`;
 }
