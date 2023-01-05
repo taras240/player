@@ -7,9 +7,9 @@ body {
   width: 100vw;
   height: 100vh;
   /* background-color: bisque; */
-  display: flex;
+  /* display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: center; */
 }
 .player {
   margin: auto;
