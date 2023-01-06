@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 body {
   font-family: "Roboto";
+  background-color: #000;
 }
 .wrapper {
   width: 100vw;
@@ -52,15 +53,28 @@ body {
   content: "%";
 }
 .player__song {
-  border: 2px solid #083965;
-  margin: 1px 0;
+  /* border: 0px solid #083965; */
+  /* width: 100vw; */
+  border-top: 1px solid #083965;
+  margin: 0px 0;
   position: relative;
   display: flex;
   align-items: center;
   gap: 5px;
   height: 2.6rem;
   padding: 5px 5px;
-  background-color: rgba(0, 204, 255, 0.192);
+  color: #ddd;
+  font-size: 1.2rem;
+  /* background-color: rgba(0, 204, 255, 0.05); */
+}
+.player__song:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.player__song.active {
+  background-color: #37cd0d;
+  color: #000;
+  padding: 20px 5px;
+  font-size: 1.5rem;
 }
 .player__seek-bar {
   margin: auto;
@@ -153,15 +167,16 @@ body {
 }
 /*----------------------------------------------*/
 .player__song-name {
-  font-size: 1.2rem;
+  font-size: inherit;
   z-index: 6;
   pointer-events: none;
   overflow: hidden;
   white-space: nowrap;
+  /* 
+  background-color: rgba(170, 170, 170, 0.384);
+  border-radius: 3px; */
 }
-.player__song:nth-child(even) {
-  background-color: rgba(2, 142, 177, 0.192);
-}
+
 .player__song-artist {
   font-weight: 700;
 }

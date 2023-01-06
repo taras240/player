@@ -6,17 +6,20 @@ let url;
 let playerElement = document.getElementById("player__songs");
 
 function searchSongs(request) {
-  url = `https://spcs.life/musicat/search/index/?Link_id=1259302&T=28&sq=${request}`;
-  fetch("https://api.codetabs.com/v1/proxy?quest=" + url)
-    .then((response) => response.text())
-    .then((response) => {
-      res = response;
-      parse(response);
-    });
+  playerElement.innerHTML = "";
+  let pagesCount = 3;
+  for (let i = 1; i <= pagesCount; i++) {
+    url = `https://spcs.life/musicat/search/index/?Link_id=1259302&P=${i}&T=28&sq=${request}`;
+    fetch("https://api.codetabs.com/v1/proxy?quest=" + url)
+      .then((response) => response.text())
+      .then((response) => {
+        res = response;
+        parse(response);
+      });
+  }
 }
 // document.getElementsByTagName("a")[0].getAttribute("href")
 function parse(html) {
-  playerElement.innerHTML = "";
   html = new DOMParser().parseFromString(html, "text/html");
   let songArticles = html.body.getElementsByClassName("__adv_list_track");
   for (let i = 0; i < songArticles.length; i++) {

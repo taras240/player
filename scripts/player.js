@@ -15,6 +15,7 @@ let time;
 let playedElement = 0;
 function updateElement() {
   time = playedElement.getElementsByClassName("player__song-lenght")[0];
+  playedElement.classList.add("active");
 
   progress = playedElement.getElementsByClassName("player__seek-bar")[0];
   progress.removeAttribute("disabled", "");
@@ -33,7 +34,7 @@ function playPressed(element) {
     playedElement.getElementsByClassName("player__seek-bar")[0].value = 0;
     progress.setAttribute("disabled", "");
     // playedElement.classList.remove("paused");
-
+    playedElement.classList.remove("active");
     playedElement = element.parentNode;
   }
   if (element.classList.contains("played")) {
