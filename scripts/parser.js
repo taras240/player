@@ -34,6 +34,10 @@ function addSong(url, songName) {
   <input class="player__seek-bar" disabled type="range" min="0" max="100" value="0" class="progress">
 
     <button class="player__play-button" onclick="playPressed(this)"></button>
+    <a
+                  class="player__download-button"
+                  href="${url}"
+                ></a>
     <p class="player__song-name">
         <span class="player__song-artist">${songName[0]}</span>
         <span class="player__song-title">${songName[1]}</span>

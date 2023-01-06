@@ -190,7 +190,8 @@ body {
   /* font-weight: 500; */
 }
 .player__play-button,
-.player__pause-button {
+.player__pause-button,
+.player__download-button {
   background-image: url(../assets/play.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -207,6 +208,10 @@ body {
 }
 .player__play-button.paused {
   background-image: url(../assets/play.png);
+}
+.player__download-button {
+  background-image: url(../assets/download.png);
+  height: 1.6rem;
 }
 .player__song-lenght {
   position: absolute;
