@@ -28,7 +28,7 @@ function parse(html) {
 
 function addSong(url, songName) {
   playerElement.innerHTML += `<div class="player__song" href = "${url}">
-  <input class="player__seek-bar" type="range" min="0" max="100" value="0" class="progress">
+  <input class="player__seek-bar" disabled type="range" min="0" max="100" value="0" class="progress">
 
     <button class="player__play-button" onclick="playPressed(this)"></button>
     <p class="player__song-name">

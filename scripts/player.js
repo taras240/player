@@ -15,7 +15,9 @@ let time;
 let playedElement = 0;
 function updateElement() {
   time = playedElement.getElementsByClassName("player__song-lenght")[0];
+
   progress = playedElement.getElementsByClassName("player__seek-bar")[0];
+  progress.removeAttribute("disabled", "");
   progress.oninput = function () {
     sound.seek((this.value / 100) * sound.duration());
   };
@@ -29,6 +31,7 @@ function playPressed(element) {
     playedElement.getElementsByClassName("player__play-button")[0].className =
       "player__play-button";
     playedElement.getElementsByClassName("player__seek-bar")[0].value = 0;
+    progress.setAttribute("disabled", "");
     // playedElement.classList.remove("paused");
 
     playedElement = element.parentNode;
