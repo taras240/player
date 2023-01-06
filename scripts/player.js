@@ -67,7 +67,9 @@ function timerTick() {
       formatTime(Math.round(sound.duration())) +
       " ]" || 0;
   progress.value =
-    Math.round(100 * sound.seek()) / Math.round(sound.duration());
+    sound.seek() > 0
+      ? Math.round(100 * sound.seek()) / Math.round(sound.duration())
+      : 0;
 }
 function formatTime(secs) {
   var minutes = Math.floor(secs / 60) || 0;
