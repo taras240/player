@@ -1,6 +1,3 @@
-let debug = document.getElementById("debug");
-let res;
-let url;
 let playerElement = document.getElementById("player__songs");
 
 function searchSongs(request) {
@@ -8,7 +5,7 @@ function searchSongs(request) {
   let pagesCount = 5;
 
   for (let i = 1; i <= pagesCount; i++) {
-    url = `https://spcs.life/musicat/search/index/?Link_id=391593&T=28&P=${i}?Vck=848629&dtype=touch_light&sq=${request}`;
+    let url = `https://spcs.life/musicat/search/index/?Link_id=391593&T=28&P=${i}?Vck=848629&dtype=touch_light&sq=${request}`;
     let proxy = "https://api.codetabs.com/v1/proxy?quest=";
     fetch(proxy + url)
       .then((response) => {
