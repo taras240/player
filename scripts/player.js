@@ -27,37 +27,36 @@ function updateElement() {
     sound.seek((this.value / 100) * sound.duration());
   };
 }
-function playPressed(element) {
+function playPressed(elementPlayButton) {
+  element = elementPlayButton.parentNode.parentNode.parentNode;
   if (playedElement == undefined) {
-    playedElement = element.parentNode;
+    playedElement = element;
   }
-  if (playedElement != 0 && element.parentNode != playedElement) {
+  if (playedElement != 0 && element != playedElement) {
     Howler.stop();
     playedElement.getElementsByClassName("player__play-button")[0].className =
       "player__play-button";
     playedElement.getElementsByClassName("player__seek-bar")[0].value = 0;
     progress.setAttribute("disabled", "");
-    // playedElement.classList.remove("paused");
     playedElement.classList.remove("active");
-    playedElement = element.parentNode;
+    playedElement = element;
   }
-  if (element.classList.contains("played")) {
+  if (elementPlayButton.classList.contains("played")) {
     sound.pause();
-    element.classList.remove("played");
-    element.classList.add("paused");
-  } else if (element.classList.contains("paused")) {
+    elementPlayButton.classList.remove("played");
+    elementPlayButton.classList.add("paused");
+  } else if (elementPlayButton.classList.contains("paused")) {
     sound.play();
-    element.classList.add("played");
-    element.classList.remove("paused");
+    elementPlayButton.classList.add("played");
+    elementPlayButton.classList.remove("paused");
   } else {
     sound = new Howl({
       src: getUrl(element),
-      /*src: ["./audio/80s_vibe.mp3"],*/
       html5: true,
     });
     sound.play();
-    element.classList.add("played");
-    element.classList.remove("paused");
+    elementPlayButton.classList.add("played");
+    elementPlayButton.classList.remove("paused");
     updateElement();
     timer = setInterval(timerTick, 300);
   }
@@ -82,11 +81,10 @@ function formatTime(secs) {
 }
 
 function getUrl(element) {
-  return element.parentNode.getAttribute("href");
+  return element.getAttribute("href");
 }
 
 function search() {
   let req = document.getElementById("search-bar").value;
-
   searchSongs(req);
 }
