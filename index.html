@@ -8,18 +8,23 @@
     <title>Player</title>
   </head>
   <body>
+    
     <div class="wrapper">
+      <header>
+        <div class="player__header">
+          <input
+            type="text"
+            id="search-bar"
+            placeholder="Search song"
+            value=""
+            onkeydown="keyPressed(event.key)"
+          />
+          <!-- <button id="searchButton" onclick="search()">Search</button> -->
+      </header>
       <section class="main">
         <main>
           <div class="player" id="player">
-            <div class="player__header">
-              <input
-                type="text"
-                id="search-bar"
-                placeholder="Search song"
-                value=""
-              />
-              <button id="searchButton" onclick="search()">Search</button>
+            
               <!-- <div class="">
                 <input
                   class="player__volume-bar"
@@ -34,44 +39,14 @@
                 <span id="volume-level">-</span>
               </div> -->
             </div>
-            <div id="player__songs">
-              <!-- <div
-                class="player__song"
-                href="http://ms02.spac.me/m/002038029179188231042164245162018170240047235125132139144205/1672952712/119205475/0/dff554da16a72d1951504b1392454995/04._Pots_And_Stove_%28Feat._Boosie_Badazz_%26amp;_Quick%29.mp3"
-              >
-                <input
-                  class="player__seek-bar"
-                  type="range"
-                  min="0"
-                  max="100"
-                  value="0"
-                />
-
-                <button
-                  class="player__play-button"
-                  onclick="playPressed(this)"
-                ></button>
-                <a
-                  class="player__download-button"
-                  href="http://ms02.spac.me/m/002038029179188231042164245162018170240047235125132139144205/1672952712/119205475/0/dff554da16a72d1951504b1392454995/04._Pots_And_Stove_(Feat._Boosie_Badazz_&amp;_Quick).mp3"
-                ></a>
-                <p class="player__song-name">
-                  <span class="player__song-artist">Europe</span>
-                  <span class="player__song-title">Final countdown </span>
-                </p>
-                <p class="player__song-time"></p>
-                <p class="player__song-lenght">?:??</p>
-              </div> -->
-            </div>
+            <div id="player__songs"></div>
           </div>
         </main>
       </section>
       <section>
         <div class="debug" id="debug"></div>
       </section>
-      <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
       <script src="scripts/parser.js"></script>
-
       <script src="scripts/howler.core.js"></script>
       <script src="scripts/player.js"></script>
     </div>

@@ -9,10 +9,14 @@
 //   Howler.volume(this.value / 100);
 // };
 let progress = document.getElementsByClassName("player__seek-bar")[0];
-
 let sound;
 let time;
-let playedElement = 0;
+let playedElement;
+function keyPressed(key) {
+  if (key == "Enter") {
+    search();
+  }
+}
 function updateElement() {
   time = playedElement.getElementsByClassName("player__song-lenght")[0];
   playedElement.classList.add("active");
@@ -24,7 +28,7 @@ function updateElement() {
   };
 }
 function playPressed(element) {
-  if (playedElement == 0) {
+  if (playedElement == undefined) {
     playedElement = element.parentNode;
   }
   if (playedElement != 0 && element.parentNode != playedElement) {
@@ -83,5 +87,6 @@ function getUrl(element) {
 
 function search() {
   let req = document.getElementById("search-bar").value;
+
   searchSongs(req);
 }

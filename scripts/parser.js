@@ -1,24 +1,24 @@
 let debug = document.getElementById("debug");
-// debug.innerText = await (await fetch("//spaces.ru")).text();
 let res;
 let url;
-// "https://spcs.life/musicat/search/index/?Link_id=1259302&T=28&sq=scooter";
 let playerElement = document.getElementById("player__songs");
 
 function searchSongs(request) {
   playerElement.innerHTML = "";
   let pagesCount = 3;
+
   for (let i = 1; i <= pagesCount; i++) {
-    url = `https://spcs.life/musicat/search/index/?Link_id=1259302&P=${i}&T=28&sq=${request}`;
-    fetch("https://api.codetabs.com/v1/proxy?quest=" + url)
-      .then((response) => response.text())
+    url = `https://spcs.life/musicat/search/index/?Link_id=391593&T=28&P=${i}?Vck=848629&dtype=touch_light&sq=${request}`;
+    let proxy = "https://api.codetabs.com/v1/proxy?quest=";
+    fetch(proxy + url)
       .then((response) => {
-        res = response;
+        return response.text();
+      })
+      .then((response) => {
         parse(response);
       });
   }
 }
-// document.getElementsByTagName("a")[0].getAttribute("href")
 function parse(html) {
   html = new DOMParser().parseFromString(html, "text/html");
   let songArticles = html.body.getElementsByClassName("__adv_list_track");
