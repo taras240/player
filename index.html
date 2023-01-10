@@ -21,31 +21,28 @@
           />
           <!-- <button id="searchButton" onclick="search()">Search</button> -->
       </header>
+      <section class="video-fixed gradient-dark loaded" data-video-fixed="">
+        <video muted loop autoplay id="video-background" style="width: 1280px;">
+           <source src=" https://www.winamp.com/wp-content/themes/ak-winamp-2021/assets/img/gradient-dark.mp4 " type="video/mp4">
+       </video>
+      
+     </section>
       <section class="main">
-        <main>
+        <main id="homePage">
+          
           <div class="player" id="player">
             
-              <!-- <div class="">
-                <input
-                  class="player__volume-bar"
-                  type="range"
-                  min="0"
-                  max="100"
-                  value="75"
-                  class="slider"
-                  id="volume"
-                  
-                />
-                <span id="volume-level">-</span>
-              </div> -->
-            </div>
-            <div id="player__songs"></div>
+             
+          <div id="player__songs"></div>
           </div>
         </main>
       </section>
       <section>
         <div class="debug" id="debug"></div>
       </section>
+      <script src=
+		"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="scripts/cross-domain-ajax/jquery.xdomainajax.js"></script>
       <script src="scripts/parser.js"></script>
       <script src="scripts/howler.core.js"></script>
       <script src="scripts/player.js"></script>
