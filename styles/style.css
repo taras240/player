@@ -121,6 +121,7 @@ header {
   border-radius: 5px;
   overflow: hidden;
   height: 4rem;
+  font-size: 2rem;
 }
 .player__seek-bar {
   margin: auto;
@@ -284,6 +285,9 @@ header {
     font-size: 1.5rem;
     margin: 0;
     transition: margin 0.5s;
+  }
+  #video-background {
+    display: none;
   }
 }
 #debug {
