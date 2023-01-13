@@ -8,20 +8,20 @@
     <title>Player</title>
   </head>
   <body>
-    
+    <header>
+      <div class="player__header">
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Search song"
+          value=""
+          onkeydown="keyPressed(event.key)"
+        />
+        <button id="nextSong" onclick="nextSong()" >NEXT</button>
+        <!-- <button id="searchButton" onclick="search()">Search</button> -->
+    </header>
     <div class="wrapper">
-      <header>
-        <div class="player__header">
-          <input
-            type="text"
-            id="search-bar"
-            placeholder="Search song"
-            value=""
-            onkeydown="keyPressed(event.key)"
-          />
-          <button id="nextSong" onclick="nextSong()" >NEXT</button>
-          <!-- <button id="searchButton" onclick="search()">Search</button> -->
-      </header>
+   
       <section class="video-fixed gradient-dark loaded" data-video-fixed="">
         <video muted loop autoplay id="video-background" style="width: 1280px;">
            <source src=" https://www.winamp.com/wp-content/themes/ak-winamp-2021/assets/img/gradient-dark.mp4 " type="video/mp4">
