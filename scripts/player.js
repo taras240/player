@@ -58,8 +58,9 @@ function playPressed(elementPlayButton) {
     elementPlayButton.classList.add("played");
     elementPlayButton.classList.remove("paused");
     updateElement();
-    timer = setInterval(timerTick, 300);
+    timer = setInterval(timerTick, 1000);
   }
+  // console.log(sound.state());
 }
 let timer;
 function timerTick() {
@@ -73,6 +74,9 @@ function timerTick() {
     sound.seek() > 0
       ? Math.round(100 * sound.seek()) / Math.round(sound.duration())
       : 0;
+  if (sound.state() === "loaded" && sound.seek() == 0) {
+    nextSong();
+  }
 }
 function formatTime(secs) {
   var minutes = Math.floor(secs / 60) || 0;
@@ -87,4 +91,22 @@ function getUrl(element) {
 function search() {
   let req = document.getElementById("search-bar").value;
   searchSongs(req);
+}
+
+function nextSong() {
+  let nextElement = playedElement?.nextSibling?.getElementsByClassName(
+    "player__play-button"
+  )[0]
+    ? playedElement?.nextSibling?.getElementsByClassName(
+        "player__play-button"
+      )[0]
+    : playedElement.parentNode.childNodes[0]?.getElementsByClassName(
+        "player__play-button"
+      )[0];
+  playPressed(nextElement);
+  nextElement.scrollIntoView({
+    behavior: "auto",
+    block: "center",
+    inline: "center",
+  });
 }

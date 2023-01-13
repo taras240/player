@@ -224,7 +224,7 @@ header {
   gap: 10px;
 }
 .song-container > div:nth-child(1) {
-  max-width: calc(100% - 20px);
+  max-width: calc(100% - 140px);
 }
 .player__song-name {
   font-size: inherit;
@@ -288,6 +288,9 @@ header {
   }
   #video-background {
     display: none;
+  }
+  .song-container > div:nth-child(1) {
+    max-width: calc(100% - 20px);
   }
 }
 #debug {
