@@ -26,6 +26,8 @@ function updateElement() {
   progress.oninput = function () {
     sound.seek((this.value / 100) * sound.duration());
   };
+  document.title =
+    playedElement.getElementsByClassName("player__song-title")[0].innerText;
 }
 function playPressed(elementPlayButton) {
   element = elementPlayButton.parentNode.parentNode.parentNode;
@@ -110,3 +112,7 @@ function nextSong() {
     inline: "center",
   });
 }
+document.body.onload = () => {
+  customSearch("https://spcs.life/musicat/search/by_tag/rock/tracks/");
+  // console.log("onload");
+};

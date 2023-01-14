@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="icon" href="../assets/music.png">
     <title>Player</title>
   </head>
   <body>
+   
     <header>
       <div class="player__header">
         <input
@@ -15,17 +17,18 @@
           id="search-bar"
           placeholder="Search song"
           value=""
+          oninput="this.size = this.value.length + 10"
           onkeydown="keyPressed(event.key)"
         />
-        <button id="nextSong" onclick="nextSong()" >NEXT</button>
+        
         <!-- <button id="searchButton" onclick="search()">Search</button> -->
     </header>
     <div class="wrapper">
    
-      <section class="video-fixed gradient-dark loaded" data-video-fixed="">
+      <!-- <section class="video-fixed gradient-dark loaded" data-video-fixed="">
         <video muted loop autoplay id="video-background" style="width: 1280px;">
            <source src=" https://www.winamp.com/wp-content/themes/ak-winamp-2021/assets/img/gradient-dark.mp4 " type="video/mp4">
-       </video>
+       </video> -->
       
      </section>
       <section class="main">
@@ -41,7 +44,12 @@
       <section>
         <div class="debug" id="debug"></div>
       </section>
-      
+      <section class="footer">
+        <footer>
+          <div class="footer__date">2023</div>
+          <div class="footer__author">Made by Taras Khomyn</div>
+        </footer>
+      </section>
       <script src="scripts/parser.js"></script>
       <script src="scripts/howler.core.js"></script>
       <script src="scripts/player.js"></script>

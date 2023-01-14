@@ -16,6 +16,21 @@ function searchSongs(request) {
       });
   }
 }
+function customSearch(url) {
+  playerElement.innerHTML = "";
+  let pagesCount = 5;
+  for (let i = 1; i <= pagesCount; i++) {
+    let url = `https://spcs.life/musicat/search/by_tag/rock/tracks/p${i}/`;
+    let proxy = "https://api.codetabs.com/v1/proxy?quest=";
+    fetch(proxy + url)
+      .then((response) => {
+        return response.text();
+      })
+      .then((response) => {
+        parse(response);
+      });
+  }
+}
 function parse(html) {
   html = new DOMParser().parseFromString(html, "text/html");
   let songArticles = html.body.getElementsByClassName("__adv_list_track");
@@ -36,7 +51,7 @@ function addSong(url, songName) {
     <div class="song-container">
     <div>
     <button class="player__play-button" onclick="playPressed(this)"></button>
-    
+    <button class="player__next-button" onclick="nextSong()" ></button>
     <p class="player__song-name">
         <span class="player__song-artist">${songName[0]}</span>
         <span class="player__song-title">${songName[1]}</span>
