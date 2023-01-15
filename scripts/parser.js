@@ -1,11 +1,19 @@
 let playerElement = document.getElementById("player__songs");
+let loadedPages = 0;
+let req = "";
+let loadedSongs = 0;
+function searchSongs(request, moreSongs = false) {
+  let pagesCount = 3;
+  if (!moreSongs) {
+    loadedPages = 0;
+    loadedSongs = 0;
+    playerElement.innerHTML = "";
+    req = request;
+  }
+  let startPage = loadedPages + 1;
 
-function searchSongs(request) {
-  playerElement.innerHTML = "";
-  let pagesCount = 5;
-
-  for (let i = 1; i <= pagesCount; i++) {
-    let url = `https://spcs.life/musicat/search/index/?Link_id=391593&T=28&P=${i}?Vck=848629&dtype=touch_light&sq=${request}`;
+  for (let i = startPage; i < startPage + pagesCount; i++) {
+    let url = `https://spcs.life/musicat/search/index/?Link_id=391593&T=28&P=${i}?Vck=848629&dtype=touch_light&sq=${req}`;
     let proxy = "https://api.codetabs.com/v1/proxy?quest=";
     fetch(proxy + url)
       .then((response) => {
@@ -14,6 +22,7 @@ function searchSongs(request) {
       .then((response) => {
         parse(response);
       });
+    loadedPages++;
   }
 }
 function customSearch(url) {
@@ -46,14 +55,20 @@ function parse(html) {
 }
 
 function addSong(url, songName) {
-  playerElement.innerHTML += `<div class="player__song" onmousedown="changeSong(this)" href = "${url}">
+  loadedSongs++;
+  playerElement.innerHTML += `<div class="player__song" onmouseup="changeSong(this)" href = "${url}">
     <input class="player__seek-bar" oninput="seek(this)" type="range" min="0" max="100" value="0" >
      <div class="progress-bar"></div>
     <div class="song-container">
-    <div>
+    <div><span class="player__song-number">${loadedSongs}</span>
     <div class="song__control-buttons">
-    <button class="player__play-button" onclick="playPressed(this)"></button>
-    <button class="player__next-button" onclick="nextSong()" ></button></div>
+      <button class="player__play-button" onclick="playPressed(this)"></button>
+      <button class="player__next-button" onclick="nextSong()" ></button>
+      <div class="player__volume-bar">
+        <div class="volume-slider-icon"></div>
+        <input class="volume-slider-slider" oninput="changeVolume(this)" type="range" min="0" max="100" value="100" >
+      </div>    
+    </div>
     <p class="player__song-name">
         <span class="player__song-artist">${songName[0]}</span>
         <span class="player__song-title">${songName[1]}</span>

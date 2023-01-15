@@ -58,11 +58,7 @@ header {
 /* #searchButton {
   width: 20%;
 } */
-.player__volume-bar {
-  margin: 10px;
-  border: solid gray 2px;
-  background-color: rebeccapurple;
-}
+
 .player__header {
   display: flex;
   justify-content: center;
@@ -135,7 +131,9 @@ header {
   z-index: 100;
   transition: margin 0.5s, box-shadow 0.2s, height 0.2s;
 }
-
+.player__song.active .player__song-number {
+  display: none;
+}
 .song-container {
   display: flex;
   justify-content: space-between;
@@ -147,7 +145,7 @@ header {
   gap: 10px;
 }
 .song-container > div:nth-child(1) {
-  max-width: calc(100% - 40px);
+  max-width: calc(100% - 100px);
 }
 .player__song-name {
   font-size: inherit;
@@ -232,6 +230,37 @@ header {
     transform: rotate(-360deg);
   }
 }
+.player__volume-bar {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.player__song.active .player__volume-bar {
+  display: flex;
+}
+.volume-slider-icon {
+  background-image: url(../assets/speaker.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  /* min-width: 1.5rem; */
+  width: 1.8rem;
+  height: 1.8rem;
+}
+.volume-slider-slider {
+  opacity: 0;
+  width: 0;
+  height: 100%;
+  transition: 0.25s;
+}
+.player__volume-bar:hover .volume-slider-slider {
+  display: block;
+  opacity: 1;
+  width: 100px;
+  transition: 0.5s;
+}
+
 .player__download-button {
   background-image: url(../assets/download.png);
   /* border-radius: 5px; */
@@ -254,6 +283,26 @@ header {
   color: white;
   border-radius: 5px;
   padding: 8px 10px;
+}
+#moreSongs {
+  display: block;
+  margin: 15px 15px;
+  font-size: 1.5rem;
+  width: calc(100% - 30px);
+  height: 35px;
+  border-radius: 5px;
+  background-color: #37cd0d;
+  transition: 0.2s;
+}
+#moreSongs:hover {
+  box-shadow: 0px 2px 15px 0px #37cd0d;
+  transition: 0.2s;
+}
+#moreSongs:active {
+  box-shadow: 0px 2px 15px 0px #2a990b;
+  background-color: #2a990b;
+
+  transition: 0.2s;
 }
 section.footer {
   /* border-top: 2px solid gray; */
@@ -311,6 +360,9 @@ footer {
     margin: 0;
     transition: margin 0.5s;
     bottom: 0;
+  }
+  .song-container > div:nth-child(1) {
+    max-width: calc(100% - 40px);
   }
   .player__song:not(.active) .player__download-button {
     display: none;

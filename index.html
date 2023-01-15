@@ -18,31 +18,46 @@
           placeholder="Search song"
           value=""         
           onkeydown="keyPressed(event.key)"
-        />
-        
+        />      
         <!-- <button id="searchButton" onclick="search()">Search</button> -->
     </header>
     <div class="wrapper">
-   
-      <!-- <section class="video-fixed gradient-dark loaded" data-video-fixed="">
-        <video muted loop autoplay id="video-background" style="width: 1280px;">
-           <source src=" https://www.winamp.com/wp-content/themes/ak-winamp-2021/assets/img/gradient-dark.mp4 " type="video/mp4">
-       </video> -->
-      
      </section>
       <section class="main">
-        <main id="homePage">
-          
+        <main id="homePage">          
           <div class="player" id="player">
-            
+           <!-- <div class="player__song" onmousedown="changeSong(this)" href = "${url}">
+              <input class="player__seek-bar" oninput="seek(this)" type="range" min="0" max="100" value="0" >
+               <div class="progress-bar"></div>
+              <div class="song-container">
+              <div>
+              <div class="song__control-buttons">
+                <button class="player__play-button" onclick="playPressed(this)"></button>
+                <button class="player__next-button" onclick="nextSong()" ></button>
+                <div class="player__volume-bar">
+                  <div class="volume-slider-icon"></div>
+                  <input class="volume-slider-slider" oninput="changeVolume(this)" type="range" min="0" max="100" value="100" >
+                </div>    
+              </div>
+              <p class="player__song-name">
+                  <span class="player__song-artist">${songName[0]}</span>
+                  <span class="player__song-title">${songName[1]}</span>
+              </p><p class="player__song-time"></p></div>
+              <div>
+              <p class="player__song-lenght"></p>
+              <div class="song__control-buttons">
+              <a
+                class="player__download-button"
+                href="${url}" download
+                ></a></div></div></div>
+          </div> -->
              
           <div id="player__songs"></div>
           </div>
+          <button onclick="searchSongs('a',true)" id="moreSongs"> MORE SONGS</button>
         </main>
       </section>
-      <section>
-        <div class="debug" id="debug"></div>
-      </section>
+  
       <section class="footer">
         <footer>
           <div class="footer__author">Made by Taras Khomyn</div>
@@ -53,6 +68,7 @@
       <script src="scripts/parser.js"></script>
       <script src="scripts/howler.core.js"></script>
       <script src="scripts/player.js"></script>
+      <script src="scripts/scrollListen.js"></script>
     </div>
   </body>
 </html>

@@ -8,6 +8,9 @@
 //   volLevel.textContent = this.value;
 //   Howler.volume(this.value / 100);
 // };
+function changeVolume(element) {
+  Howler.volume(element.value / 100);
+}
 let progress = document.getElementsByClassName("player__seek-bar")[0];
 let progressBar = document.getElementsByClassName("progress-bar")[0];
 let sound;
@@ -29,6 +32,8 @@ function updateElement() {
   progress = playedElement.getElementsByClassName("player__seek-bar")[0];
   document.title =
     playedElement.getElementsByClassName("player__song-title")[0].innerText;
+  playedElement.getElementsByClassName("volume-slider-slider")[0].value =
+    Howler.volume() * 100;
 }
 function changeSong(element) {
   if (!element.classList.contains("active")) {
