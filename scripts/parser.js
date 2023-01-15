@@ -61,9 +61,11 @@ function addSong(url, songName) {
     <div>
     <p class="player__song-lenght"></p>
     <div class="song__control-buttons">
-    <a
-                  class="player__download-button"
-                  href="${url}" download=""
-                ></a></div></div></div>
+    <button class="player__download-button" type="submit" onclick="window.open('${url}')"></button>
+   </div></div></div>
 </div>`;
 }
+/* <a
+                  class="player__download-button"
+                  href="${url}" download=""
+                ></a>*/
