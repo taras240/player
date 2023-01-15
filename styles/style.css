@@ -362,6 +362,24 @@ footer {
   border-radius: 5px;
 }
 @media screen and (max-width: 900px) {
+  #search-bar {
+    padding: 5px;
+    font-size: 16px;
+    width: 90vw;
+    min-width: 200px;
+    max-width: 100vw;
+    height: 3rem;
+    padding: 10px;
+    font-size: 2rem;
+    background-color: black;
+    color: #ddd;
+
+    /* border: none; */
+  }
+  .player__song {
+    margin: 0;
+    padding: 0;
+  }
   .player__song-lenght {
     display: none;
   }
@@ -370,6 +388,14 @@ footer {
     margin: 0;
     transition: margin 0.5s;
     bottom: 0;
+  }
+  .player__song:not(.active) .player__download-button {
+    display: none;
+  }
+  .player__song:not(.active) .song-container > div:nth-child(1) {
+    max-width: 100%;
+  }
+   {
   }
   section.footer {
     position: relative;
