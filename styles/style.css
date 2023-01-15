@@ -1,6 +1,6 @@
 @import "null.css";
 @import "background.css";
-
+@import "progress.css";
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 body {
   font-family: "Roboto";
@@ -128,107 +128,14 @@ header {
   bottom: 65px;
   z-index: 11;
   border-radius: 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 4rem;
   font-size: 2rem;
-  box-shadow: 0px 2px 24px -4px rgba(30, 144, 255, 1);
+  box-shadow: 0px 2px 15px 0px rgba(30, 144, 255, 1);
   z-index: 100;
   transition: margin 0.5s, box-shadow 0.2s, height 0.2s;
 }
-.player__seek-bar {
-  margin: auto;
-  overflow: hidden;
-  -webkit-appearance: none;
-  position: absolute;
-  z-index: 5;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  display: none;
-}
-.player__song.active .player__seek-bar {
-  display: block;
-  cursor: pointer;
-}
-.player__seek-bar::-webkit-slider-runnable-track {
-  height: 100%;
-}
-/*-------------------------------------*/
-/* #progress {
-  margin: auto;
-  -webkit-appearance: none;
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 0;
-} */
 
-.player__seek-bar::-webkit-slider-runnable-track {
-  background: transparent;
-}
-
-/*
-* 1. Set to 0 width and remove border for a slider without a thumb
-* 2. Shadow is negative the full width of the input and has a spread 
-*    of the width of the input.
-*/
-.player__seek-bar::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 0;
-  height: 100%;
-  background: #fff;
-  box-shadow: -1000px 0 0 1000px #37cd0d; /* 2 */
-}
-
-.player__seek-bar::-moz-range-track {
-  height: 40px;
-  background: #000;
-}
-
-::-moz-range-thumb {
-  background: #fff;
-  height: 40px;
-  width: 0;
-  /* border: 3px solid #999; */
-  border-radius: 0 !important;
-  box-shadow: -200px 0 0 200px dodgerblue;
-  box-sizing: border-box;
-}
-
-.player__seek-bar::-ms-fill-lower {
-  background: dodgerblue;
-}
-
-.player__seek-bar::-ms-thumb {
-  background: #fff;
-  border: 2px solid #999;
-  height: 40px;
-  width: 20px;
-  box-sizing: border-box;
-}
-
-.player__seek-bar::-ms-ticks-after {
-  display: none;
-}
-
-.player__seek-bar::-ms-ticks-before {
-  display: none;
-}
-
-.player__seek-bar::-ms-track {
-  background: #ddd;
-  color: transparent;
-  height: 40px;
-  border: none;
-}
-
-.player__seek-bar::-ms-tooltip {
-  display: none;
-}
-/*----------------------------------------------*/
 .song-container {
   display: flex;
   justify-content: space-between;
@@ -309,9 +216,21 @@ header {
   background-image: url(../assets/pause-active.png);
   transition: background-image 0.2s;
 }
-.player__play-button.paused {
+.player__song.active .player__play-button.paused {
   background-image: url(../assets/play-button-active.png);
   transition: background-image 0.2s;
+}
+.player__song.active .player__play-button.loading {
+  background-image: url(../assets/play-loading.png);
+
+  transition: background-image 0.2s;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
 }
 .player__download-button {
   background-image: url(../assets/download.png);
@@ -328,6 +247,7 @@ header {
   user-select: none;
   pointer-events: none;
   font-size: 1.2rem;
+  transition: 0.4s;
 }
 .player__song.active .player__song-lenght {
   background-color: #000;
@@ -362,6 +282,9 @@ footer {
   border-radius: 5px;
 }
 @media screen and (max-width: 900px) {
+  section.footer {
+    position: relative;
+  }
   #search-bar {
     padding: 5px;
     font-size: 16px;
@@ -395,12 +318,23 @@ footer {
   .player__song:not(.active) .song-container > div:nth-child(1) {
     max-width: 100%;
   }
-   {
-  }
-  section.footer {
-    position: relative;
-  }
 }
+
 #debug {
   color: white;
+}
+.progress-bar {
+  display: none;
+  position: absolute;
+  height: 100%;
+  background-color: #37cd0d;
+  box-shadow: 0px 2px 20px 0 #37cd0d;
+  border-radius: 5px 0 0 5px;
+  width: 0;
+  left: 0;
+  pointer-events: none;
+  min-width: 5px;
+}
+.player__song.active .progress-bar {
+  display: block;
 }

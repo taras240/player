@@ -9,6 +9,7 @@
 //   Howler.volume(this.value / 100);
 // };
 let progress = document.getElementsByClassName("player__seek-bar")[0];
+let progressBar = document.getElementsByClassName("progress-bar")[0];
 let sound;
 let time;
 let playedElement;
@@ -17,15 +18,15 @@ function keyPressed(key) {
     search();
   }
 }
+function seek(element) {
+  sound.seek((element.value / 100) * sound.duration());
+  progressBar.style.width = element.value + "%";
+}
 function updateElement() {
   time = playedElement.getElementsByClassName("player__song-lenght")[0];
   playedElement.classList.add("active");
-
+  progressBar = playedElement.getElementsByClassName("progress-bar")[0];
   progress = playedElement.getElementsByClassName("player__seek-bar")[0];
-  progress.removeAttribute("disabled", "");
-  progress.oninput = function () {
-    sound.seek((this.value / 100) * sound.duration());
-  };
   document.title =
     playedElement.getElementsByClassName("player__song-title")[0].innerText;
 }
@@ -44,38 +45,53 @@ function playPressed(elementPlayButton) {
     playedElement.getElementsByClassName("player__play-button")[0].className =
       "player__play-button";
     playedElement.getElementsByClassName("player__seek-bar")[0].value = 0;
-    progress.setAttribute("disabled", "");
     playedElement.classList.remove("active");
     playedElement = element;
   }
   if (elementPlayButton.classList.contains("played")) {
     sound.pause();
-    elementPlayButton.classList.remove("played");
-    elementPlayButton.classList.add("paused");
   } else if (elementPlayButton.classList.contains("paused")) {
     sound.play();
-    elementPlayButton.classList.add("played");
-    elementPlayButton.classList.remove("paused");
   } else {
+    elementPlayButton.classList.add("loading");
+
     sound = new Howl({
       src: getUrl(element),
       html5: true,
+
       onend: nextSong,
+
+      onload: () => {
+        elementPlayButton.classList.remove("loading");
+      },
+      onplay: function () {
+        timer = setInterval(timerTick, 500);
+        elementPlayButton.classList.add("played");
+        elementPlayButton.classList.remove("paused");
+      },
+      onpause: function () {
+        clearTimeout(timer);
+        elementPlayButton.classList.remove("played");
+        elementPlayButton.classList.add("paused");
+      },
+      onstop: function () {
+        clearTimeout(timer);
+      },
     });
     sound.play();
-    elementPlayButton.classList.add("played");
-    elementPlayButton.classList.remove("paused");
+
     updateElement();
-    timer = setInterval(timerTick, 1000);
   }
 }
 let timer;
 function timerTick() {
   time.textContent = formatTime(Math.round(sound.duration()));
-  progress.value =
+  let songPosition =
     sound.seek() > 0
       ? Math.round(100 * sound.seek()) / Math.round(sound.duration())
       : 0;
+  progress.value = songPosition;
+  progressBar.style.width = songPosition + "%";
 }
 function formatTime(secs) {
   if (secs) {
@@ -111,8 +127,7 @@ function nextSong() {
     block: "center",
     inline: "center",
   });
-  // console.log(playedElement.innerHTML);
 }
 document.body.onload = () => {
-  searchSongs("Степан Гіга");
+  searchSongs("Ілля найда");
 };
