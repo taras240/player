@@ -29,8 +29,13 @@ function updateElement() {
   document.title =
     playedElement.getElementsByClassName("player__song-title")[0].innerText;
 }
+function changeSong(element) {
+  if (!element.classList.contains("active")) {
+    playPressed(element.getElementsByClassName("player__play-button")[0]);
+  }
+}
 function playPressed(elementPlayButton) {
-  element = elementPlayButton.parentNode.parentNode.parentNode;
+  element = elementPlayButton.parentNode.parentNode.parentNode.parentNode;
   if (playedElement == undefined) {
     playedElement = element;
   }
@@ -55,6 +60,7 @@ function playPressed(elementPlayButton) {
     sound = new Howl({
       src: getUrl(element),
       html5: true,
+      onend: nextSong,
     });
     sound.play();
     elementPlayButton.classList.add("played");
@@ -62,28 +68,22 @@ function playPressed(elementPlayButton) {
     updateElement();
     timer = setInterval(timerTick, 1000);
   }
-  // console.log(sound.state());
 }
 let timer;
 function timerTick() {
-  time.textContent =
-    "[ -" +
-      formatTime(Math.round(sound.duration() - sound.seek())) +
-      "/" +
-      formatTime(Math.round(sound.duration())) +
-      " ]" || 0;
+  time.textContent = formatTime(Math.round(sound.duration()));
   progress.value =
     sound.seek() > 0
       ? Math.round(100 * sound.seek()) / Math.round(sound.duration())
       : 0;
-  if (sound.state() === "loaded" && sound.seek() == 0) {
-    nextSong();
-  }
 }
 function formatTime(secs) {
-  var minutes = Math.floor(secs / 60) || 0;
-  var seconds = secs - minutes * 60 || 0;
-  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+  if (secs) {
+    var minutes = Math.floor(secs / 60) || 0;
+    var seconds = secs - minutes * 60 || 0;
+    return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+  }
+  return "0:00";
 }
 
 function getUrl(element) {
@@ -111,8 +111,8 @@ function nextSong() {
     block: "center",
     inline: "center",
   });
+  // console.log(playedElement.innerHTML);
 }
 document.body.onload = () => {
-  customSearch("https://spcs.life/musicat/search/by_tag/rock/tracks/");
-  // console.log("onload");
+  searchSongs("Степан Гіга");
 };
