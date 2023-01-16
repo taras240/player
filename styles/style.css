@@ -34,7 +34,7 @@ body {
 }
 #moreSongs {
   display: block;
-  margin: 15px 20px;
+  margin: 15px auto;
   font-size: 1.5rem;
   width: calc(100% - 30px);
   height: 35px;
