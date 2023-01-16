@@ -21,6 +21,11 @@ function keyPressed(key) {
     search();
   }
 }
+function hidePlayedElement(element) {}
+function mute(e) {
+  sound.mute(!sound.mute());
+  console.log(sound.mute());
+}
 function seek(element) {
   sound.seek((element.value / 100) * sound.duration());
   progressBar.style.width = element.value + "%";
@@ -40,6 +45,16 @@ function changeSong(element) {
     playPressed(element.getElementsByClassName("player__play-button")[0]);
   }
 }
+function setSongToDefaultState(element) {
+  if (!element) return;
+  element.getElementsByClassName("player__play-button")[0].className =
+    "player__play-button";
+  element.getElementsByClassName("player__seek-bar")[0].value = 0;
+  element.classList.remove("active");
+  element.getElementsByClassName("volume-slider-icon")[0].style.opacity = 1;
+  element.getElementsByClassName("volume-slider-slider")[0].style.display =
+    "block";
+}
 function playPressed(elementPlayButton) {
   element = elementPlayButton.parentNode.parentNode.parentNode.parentNode;
   if (playedElement == undefined) {
@@ -47,10 +62,7 @@ function playPressed(elementPlayButton) {
   }
   if (playedElement != 0 && element != playedElement) {
     Howler.stop();
-    playedElement.getElementsByClassName("player__play-button")[0].className =
-      "player__play-button";
-    playedElement.getElementsByClassName("player__seek-bar")[0].value = 0;
-    playedElement.classList.remove("active");
+    setSongToDefaultState(playedElement);
     playedElement = element;
   }
   if (elementPlayButton.classList.contains("played")) {
@@ -59,13 +71,19 @@ function playPressed(elementPlayButton) {
     sound.play();
   } else {
     elementPlayButton.classList.add("loading");
-
     sound = new Howl({
       src: getUrl(element),
       html5: true,
 
-      onend: nextSong,
-
+      onmute: () => {
+        playedElement.getElementsByClassName(
+          "volume-slider-icon"
+        )[0].style.opacity = sound.mute() ? 0.5 : 1;
+        playedElement.getElementsByClassName(
+          "volume-slider-slider"
+        )[0].style.display = sound.mute() ? "none" : "block";
+        // console.log("ok");
+      },
       onload: () => {
         elementPlayButton.classList.remove("loading");
       },
@@ -82,6 +100,7 @@ function playPressed(elementPlayButton) {
       onstop: function () {
         clearTimeout(timer);
       },
+      onend: nextSong,
     });
     sound.play();
 
@@ -134,5 +153,5 @@ function nextSong() {
   });
 }
 document.body.onload = () => {
-  searchSongs("Ілля найда");
+  searchSongs("relax music");
 };
