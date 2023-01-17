@@ -1,13 +1,3 @@
-// let musicUri =
-//   "http://ms02.spac.me/m/002038029179188231042164245162018170240047235125132139144205/1672952712/119205475/0/dff554da16a72d1951504b1392454995/04._Pots_And_Stove_%28Feat._Boosie_Badazz_%26amp;_Quick%29.mp3";
-
-// let volumeBar = document.getElementById("volume");
-// let volLevel = document.getElementById("volume-level");
-// volLevel.innerText = volumeBar.value;
-// volumeBar.oninput = function () {
-//   volLevel.textContent = this.value;
-//   Howler.volume(this.value / 100);
-// };
 function changeVolume(element) {
   Howler.volume(element.value / 100);
 }
@@ -24,7 +14,6 @@ function keyPressed(key) {
 function hidePlayedElement(element) {}
 function mute(e) {
   sound.mute(!sound.mute());
-  console.log(sound.mute());
 }
 function seek(element) {
   sound.seek((element.value / 100) * sound.duration());
@@ -74,14 +63,18 @@ function playPressed(elementPlayButton) {
     sound = new Howl({
       src: getUrl(element),
       html5: true,
-
       onmute: () => {
         playedElement.getElementsByClassName(
-          "volume-slider-icon"
-        )[0].style.opacity = sound.mute() ? 0.5 : 1;
-        playedElement.getElementsByClassName(
-          "volume-slider-slider"
-        )[0].style.display = sound.mute() ? "none" : "block";
+          "player__volume-bar"
+        )[0].className = sound.mute()
+          ? "player__volume-bar muted"
+          : "player__volume-bar";
+        // playedElement.getElementsByClassName(
+        //   "volume-slider-icon"
+        // )[0].style.opacity = sound.mute() ? 0.5 : 1;
+        // playedElement.getElementsByClassName(
+        //   "volume-slider-slider"
+        // )[0].style.display = sound.mute() ? "none" : "block";
         // console.log("ok");
       },
       onload: () => {
