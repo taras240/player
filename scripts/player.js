@@ -6,6 +6,8 @@ let progressBar = document.getElementsByClassName("progress-bar")[0];
 let sound;
 let time;
 let playedElement;
+let timer;
+
 function keyPressed(key) {
   if (key == "Enter") {
     search();
@@ -69,13 +71,6 @@ function playPressed(elementPlayButton) {
         )[0].className = sound.mute()
           ? "player__volume-bar muted"
           : "player__volume-bar";
-        // playedElement.getElementsByClassName(
-        //   "volume-slider-icon"
-        // )[0].style.opacity = sound.mute() ? 0.5 : 1;
-        // playedElement.getElementsByClassName(
-        //   "volume-slider-slider"
-        // )[0].style.display = sound.mute() ? "none" : "block";
-        // console.log("ok");
       },
       onload: () => {
         elementPlayButton.classList.remove("loading");
@@ -100,7 +95,7 @@ function playPressed(elementPlayButton) {
     updateElement();
   }
 }
-let timer;
+
 function timerTick() {
   time.textContent = formatTime(Math.round(sound.duration()));
   let songPosition =
