@@ -1,0 +1,54 @@
+.player__artist {
+    border-top: 1px solid #083965;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 2.6rem;
+    padding: 5px 5px;
+    color: #ddd;
+    font-size: 1.2rem;
+    transition: margin 0.5s;
+    margin: 0 15px 0px;
+    cursor: pointer;
+    transition: background-color 0.3, margin 0.5s, box-shadow 0.2s, height 0.2s;
+}
+
+.player__artist:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: margin 0.5s;
+}
+
+.player__artist:hover {
+    background-color: #1e8fff5e;
+    transition: background-color 0.3s;
+}
+
+/* .player__artist.active {
+    background-color: #1e90ff;
+    color: #000;
+    padding: 20px;
+    margin: 0;
+    font-size: 1.5rem;
+    position: sticky;
+    top: calc(3rem + 45px);
+    bottom: 65px;
+    z-index: 11;
+    border-radius: 5px;
+    /* overflow: hidden; */
+    height: 4rem;
+    font-size: 2rem;
+    /* box-shadow: 0px 2px 10px 0px rgba(30, 144, 255, 1); */
+    z-index: 100;
+    transition: margin 0.5s, box-shadow 0.2s, height 0.2s;
+} */
+
+/* .artist-container {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100%);
+}
+
+.player__artist {
+    font-weight: 700;
+} */

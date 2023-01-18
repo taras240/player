@@ -120,10 +120,18 @@ function getUrl(element) {
 
 function search() {
   let req = document.getElementById("search-bar").value;
-  searchSongs(req);
+  switch (document.getElementById("searchtype").selectedIndex) {
+    case 0:
+      searchArtists(req);
+      break;
+    case 1:
+      searchSongs(req);
+  }
+  // searchSongs(req);
 }
 
-function nextSong() {
+function nextSong(event) {
+  event.stopImmediatePropagation();
   let nextElement = playedElement?.nextSibling?.getElementsByClassName(
     "player__play-button"
   )[0]
@@ -141,5 +149,5 @@ function nextSong() {
   });
 }
 document.body.onload = () => {
-  searchSongs("relax music");
+  searchSongs("Cafe del");
 };

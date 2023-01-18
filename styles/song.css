@@ -126,6 +126,7 @@
 
 .player__next-button {
   background-image: url(../assets/skip.png);
+  
   display: none;
 }
 

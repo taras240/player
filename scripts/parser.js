@@ -2,6 +2,7 @@ let playerElement = document.getElementById("player__songs");
 let loadedPages = 0;
 let req = "";
 let loadedSongs = 0;
+
 function searchSongs(request, moreSongs = false) {
   setSongToDefaultState(playedElement);
   let pagesCount = 3;
@@ -64,7 +65,7 @@ function addSong(url, songName) {
       <div><span class="player__song-number">${loadedSongs}</span>
         <div class="song__control-buttons">
           <button class="player__play-button" onclick="playPressed(this)"></button>
-          <button class="player__next-button" onclick="nextSong()" ></button>
+          <button class="player__next-button" onclick="nextSong(event)" ></button>
           <div class="player__volume-bar">
             <div class="volume-slider-icon" onclick="mute(this)"></div>
             <input class="volume-slider-slider" oninput="changeVolume(this)" type="range" min="0" max="100" value="100" >

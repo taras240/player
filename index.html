@@ -18,7 +18,11 @@
           placeholder="Search song"
           value=""         
           onkeydown="keyPressed(event.key)"
-        />      
+        />
+        <select name="searchtype" id="searchtype">
+          <option value="artist">by artist</option>
+          <option value="all" selected>normal</option>
+        </select>      
         <!-- <button id="searchButton" onclick="search()">Search</button> -->
     </header>
     <div class="wrapper">
@@ -60,12 +64,14 @@
   
       <section class="footer">
         <footer>
-          <div class="footer__author">Made by Taras Khomyn</div>
+          <div class="footer__author" >Made by Taras Khomyn</div>
           <div class="footer__date">2023, Opaka</div>
           
         </footer>
       </section>
       <script src="scripts/parser.js"></script>
+            <script src="scripts/artistParser.js"></script>
+
       <script src="scripts/howler.core.js"></script>
       <script src="scripts/player.js"></script>
       <script src="scripts/scrollListen.js"></script>
