@@ -95,17 +95,15 @@
   width: 5px;
   height: 1px;
   background-color: wheat;
-  font-weight: normal;
   text-decoration: none;
   pointer-events: none;
 }
-.player__song-artist:hover:after {
-  /* content: " - "; */
-  font-weight: normal;
-  text-decoration: none;
-  pointer-events: none;
+.player__song.active .player__song-artist:not(:empty):after {
+  top: calc(50% - 2px);
+  right: -12px;
+  height: 2px;
+  background-color: black;
 }
-
 .song__control-buttons {
   display: flex;
   justify-content: start;

@@ -12,7 +12,7 @@
 }
 .player__song.active .player__seek-bar {
   display: block;
-  cursor: pointer;
+  cursor: ew-resize;
 }
 /* .player__seek-bar::-webkit-slider-runnable-track {
   height: 100%;
