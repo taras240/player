@@ -72,7 +72,7 @@ function addSong(url, songName) {
           </div>    
         </div>
       <p class="player__song-name">
-        <span class="player__song-artist">${songName[0]}</span>
+        <span class="player__song-artist" onclick="searchArtists(this.innerText,event)">${songName[0]}</span>
         <span class="player__song-title">${songName[1]}</span>
       </p>
       <p class="player__song-time"></p>

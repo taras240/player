@@ -70,17 +70,21 @@
 .player__song-name {
   font-size: inherit;
   z-index: 6;
-  pointer-events: none;
+  /* pointer-events: none; */
   overflow: hidden;
   white-space: nowrap;
 }
 
 .player__song-artist {
   font-weight: 700;
-}
 
+}
+.player__song-artist:hover {
+text-decoration: underline;
+}
 .player__song-title::before {
   content: " - ";
+    pointer-events: none;
 }
 
 .song__control-buttons {

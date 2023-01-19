@@ -1,6 +1,8 @@
 // let playerElement = document.getElementById("player__songs");
 
-function searchArtists(request) {
+function searchArtists(request, event = null) {
+  event?.stopImmediatePropagation();
+
   let pagesCount = 1;
   playerElement.innerHTML = "";
 
