@@ -88,7 +88,7 @@ function parseArtistSongs(html) {
         .getElementsByTagName("a")[1]
         .getAttribute("href");
       let songName = [
-        // artistName,
+        "",
         songArticles[i].getElementsByClassName("oh")[0].innerText,
       ];
       addSong(url, songName);

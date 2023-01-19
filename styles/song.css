@@ -70,21 +70,40 @@
 .player__song-name {
   font-size: inherit;
   z-index: 6;
-  /* pointer-events: none; */
+  pointer-events: none;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .player__song-artist {
   font-weight: 700;
-
+  position: relative;
+  pointer-events: auto;
 }
 .player__song-artist:hover {
-text-decoration: underline;
+  text-decoration: underline;
 }
-.player__song-title::before {
-  content: " - ";
-    pointer-events: none;
+.player__song-title {
+  pointer-events: none;
+  margin-left: 10px;
+}
+.player__song-artist:not(:empty):after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  right: -10px;
+  width: 5px;
+  height: 1px;
+  background-color: wheat;
+  font-weight: normal;
+  text-decoration: none;
+  pointer-events: none;
+}
+.player__song-artist:hover:after {
+  /* content: " - "; */
+  font-weight: normal;
+  text-decoration: none;
+  pointer-events: none;
 }
 
 .song__control-buttons {
@@ -130,7 +149,7 @@ text-decoration: underline;
 
 .player__next-button {
   background-image: url(../assets/skip.png);
-  
+
   display: none;
 }
 
