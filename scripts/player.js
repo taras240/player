@@ -75,20 +75,22 @@ function playPressed(elementPlayButton) {
       onload: () => {
         elementPlayButton.classList.remove("loading");
       },
-      onplay: function () {
+      onplay: () => {
         timer = setInterval(timerTick, 500);
         elementPlayButton.classList.add("played");
         elementPlayButton.classList.remove("paused");
       },
-      onpause: function () {
+      onpause: () => {
         clearTimeout(timer);
         elementPlayButton.classList.remove("played");
         elementPlayButton.classList.add("paused");
       },
-      onstop: function () {
+      onstop: () => {
         clearTimeout(timer);
       },
-      onend: nextSong,
+      onend: () => {
+        nextSong();
+      },
     });
     sound.play();
 
@@ -130,8 +132,8 @@ function search() {
   // searchSongs(req);
 }
 
-function nextSong(event) {
-  event.stopImmediatePropagation();
+function nextSong(event = null) {
+  event?.stopImmediatePropagation();
   let nextElement = playedElement?.nextSibling?.getElementsByClassName(
     "player__play-button"
   )[0]
