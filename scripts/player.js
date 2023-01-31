@@ -31,8 +31,14 @@ function updateElement() {
   playedElement.getElementsByClassName("volume-slider-slider")[0].value =
     Howler.volume() * 100;
 }
-function changeSong(element) {
-  if (!element.classList.contains("active")) {
+function changeSong(element, event = null) {
+  event?.stopImmediatePropagation();
+  if (
+    !element.classList.contains("active") ||
+    element
+      .getElementsByClassName("player__play-button")[0]
+      .classList.contains("paused")
+  ) {
     playPressed(element.getElementsByClassName("player__play-button")[0]);
   }
 }

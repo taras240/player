@@ -58,7 +58,7 @@ function parse(html) {
 
 function addSong(url, songName) {
   loadedSongs++;
-  playerElement.innerHTML += `<div class="player__song" onclick="changeSong(this)" href = "${url}">
+  playerElement.innerHTML += `<div class="player__song" onclick="changeSong(this, event)" href = "${url}">
     <input class="player__seek-bar" oninput="seek(this)" type="range" min="0" max="100" value="0" >
      <div class="progress-bar"></div>
     <div class="song-container" >
@@ -72,7 +72,11 @@ function addSong(url, songName) {
           </div>    
         </div>
       <p class="player__song-name">
-        <span class="player__song-artist" onclick="searchArtists(this.innerText,event)">${songName[0]}</span>
+        <span class="player__song-artist">${songName[0]}
+          <button class="player__artist-button" onclick="searchArtists(this,event)"></button>
+        </span>
+        <span class="song-name-separator"> - </span>
+
         <span class="player__song-title">${songName[1]}</span>
       </p>
       <p class="player__song-time"></p>

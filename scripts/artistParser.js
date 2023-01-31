@@ -2,7 +2,10 @@
 
 function searchArtists(request, event = null) {
   event?.stopImmediatePropagation();
-
+  if (event) {
+    request = request.parentNode.innerText;
+    console.log(request);
+  }
   let pagesCount = 1;
   playerElement.innerHTML = "";
 
