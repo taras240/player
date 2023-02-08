@@ -15,14 +15,17 @@ function searchSongs(request, moreSongs = false) {
   let startPage = loadedPages + 1;
 
   for (let i = startPage; i < startPage + pagesCount; i++) {
-    let url = `https://spcs.life/musicat/search/index/?Link_id=391593&T=28&P=${i}?Vck=848629&dtype=touch_light&sq=${req}`;
+    let url = `https://spcs.pro/music/user/taras240/list/-/p${i}/`;
     let proxy = "https://api.codetabs.com/v1/proxy?quest=";
+    // proxy = "";
     fetch(proxy + url)
       .then((response) => {
         return response.text();
       })
       .then((response) => {
         parse(response);
+        // playerElement.innerHTML = response;
+        // console.log(response);
       });
     loadedPages++;
   }
@@ -44,13 +47,15 @@ function customSearch(url) {
 }
 function parse(html) {
   html = new DOMParser().parseFromString(html, "text/html");
-  let songArticles = html.body.getElementsByClassName("__adv_list_track");
+  let songArticles = html.body.getElementsByClassName("block oh bord-botm");
   for (let i = 0; i < songArticles.length; i++) {
     try {
       let url = songArticles[i]
         .getElementsByTagName("a")[1]
         .getAttribute("href");
-      let songName = songArticles[i].innerText.split(":");
+      let songName = songArticles[i]
+        .getElementsByClassName("m break-word darkblue break-word")[0]
+        .innerText.split("-");
       addSong(url, songName);
     } catch {}
   }
